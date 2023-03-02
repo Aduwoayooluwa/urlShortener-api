@@ -60,4 +60,24 @@ router.route('/shorten_link')
     .post(shortenLink)
 
 
+    // redirecting shortened link to original url
+router.route('/:code')
+    .get( async (req: Request, res:Response) => {
+        try {
+            const url = await LinkSchema.findOne({ urlCode: req.params.code })
+
+            if (url) {
+                console.log('Found. redirecting to original url');
+                return res.redirect(url.longLink)
+            }
+            else {
+                return res.status(400).json({ message: "Not found" })
+            }
+        } catch (error) {
+            console.error(error)
+            res.status(500).json({ message: "Some error has occured" })
+        }
+    })
+
+
 module.exports = router
