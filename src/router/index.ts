@@ -1,8 +1,21 @@
 import express, {Request, Response} from 'express'
 
-const router = express.Router()
+const LinkRouter = express.Router()
+
+const baseLinkModel = ""
+
+const shortenLink = (req: Request, res:Response) => {
+    const link: string = req.body.link
+    let forwardTo;
+    let newLink;
 
 
-const shorten_link = (req: Request, res:Response) => {
 
+    res.send('Shortened link')
 }
+
+
+LinkRouter.post('/shorten_link', shortenLink)
+
+
+module.exports = LinkRouter
