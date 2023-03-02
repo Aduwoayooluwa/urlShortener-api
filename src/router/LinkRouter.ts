@@ -1,6 +1,6 @@
 import express, {Request, Response} from 'express'
 
-const LinkRouter = express.Router()
+const router = express.Router()
 
 const baseLinkModel = ""
 
@@ -15,7 +15,8 @@ const shortenLink = (req: Request, res:Response) => {
 }
 
 
-LinkRouter.post('/shorten_link', shortenLink)
+router.route('/shorten_link')
+    .post(shortenLink)
 
 
-module.exports = LinkRouter
+module.exports = router
