@@ -5,7 +5,7 @@ const config = require('config')
 const LinkSchema = require('./models/LinkSchema')
 
 
-const router = express.Router()
+export const router = express.Router()
 
 const shortenLink = async (req: Request, res:Response) => {
     const longLink = req.body.longLink
@@ -80,4 +80,3 @@ router.route('/:code')
     })
 
 
-module.exports = router
